@@ -1,76 +1,99 @@
 package org.firstinspires.ftc.teamcode;
+public class GamepadB {
 
-public class GamePadB {
-    private boolean isRunning = true;
-    private final Robot robot;
-
-    public GamePadB(Robot robot) {
-
-        this.robot = robot;
-        this.isRunning = false;
+private MyRobot robot;
+    
+    public GamepadB(MyRobot robot) {
+        this.robot=robot;
     }
 
-    public void buttonA(boolean pressed) {
-        if(isRunning == false) {
-            isRunning = true;
-            robot.actions.grabSample();
-            isRunning = false;
-        }
-
-    }
-    public void buttonB(boolean pressed) {
-        robot.armAttachment.gripper.toggle();
-;    }
-    public void buttonX(boolean pressed) {
-        //Implement here
-    }
-    public void buttonY(boolean pressed) {
-
-    }
-    public void dpadUp(boolean pressed) {
-        robot.poses.specimenDelivery();
-    }
-    public void dpadDown(boolean pressed) {
-        robot.poses.sampleIntake();
-    }
-
-    public void dpadLeft(boolean pressed) {
-        robot.poses.topBasketDelivery();
-    }
-    public void dpadRight(boolean pressed) {
-        robot.poses.specimenIntake();
-    }
-
-    public void leftBumper(boolean pressed) {
-        robot.armAttachment.wristRotate.positionUp();
-    }
-
-    public void rightBumper(boolean pressed) {
-        robot.armAttachment.wristRotate.positionDown();
-    }
-
-    public void leftTrigger(double buttonPressure) {
-        if (buttonPressure > 0.1){
-            robot.armAttachment.elevator.moveByInput(-buttonPressure);
+    public void buttonB (boolean pressed) {
+        if(pressed) {
+            //robot.armAttachment.claw.toggle();
         }
     }
-    public void rightTrigger(double buttonPressure) {
-        if (buttonPressure > 0.1) {
-            robot.armAttachment.elevator.moveByInput(buttonPressure);
+    public void buttonA (boolean pressed) {
+        if(pressed){
+            robot.armAttachment.claw.open();
+            //robot.armAttachment.arm.setToSampleSubmersibleIntakeGrabPostion();
+            //robot.armAttachment.claw.close();
+            robot.armAttachment.arm.setToSampleSubmersibleIntakePostion();
         }
     }
-
-    public void leftJoystickY(double input) {
-        robot.armAttachment.arm.moveByInput((int)(input*100));
+    public void buttonY (boolean pressed) {
+        if(pressed){
+            //robot.armAttachment.wristRotate.setToCenterPosition();
+            robot.armAttachment.wristHinge.setToSampleHighBasketDeliveryPosition();
+        }
     }
-
-    public void rightJoystickY(double input) {
-
+    public void buttonX (boolean pressed) {
+        if(pressed){}
     }
-
-    public void leftJoystickX(double input) {
+    public void buttonUp (boolean pressed) {
+        if(pressed) {
+            // robot.armAttachment.arm.setToSpecimenDeliverPosition();
+            // robot.armAttachment.extension.setToSpecimenDeliverPosition();
+            // robot.armAttachment.wristHinge.setToSpecimenDeliverPosition();
+            // robot.armAttachment.claw.close();
+        }
+        
+        
     }
-
-    public void rightJoystickX(double input) {
+    public void buttonDown (boolean pressed) {
+        if(pressed){
+            // robot.armAttachment.extension.setToSampleSubmersibleIntakePosition();
+            // robot.armAttachment.wristHinge.setToSampleSubmersIntakePosition();
+            // robot.armAttachment.claw.open();
+            // robot.armAttachment.arm.setToSampleSubmersibleIntakePostion();
+        }
     }
+    public void buttonLeft (boolean pressed) {
+        if(pressed){
+            // robot.armAttachment.extension.setToHighBasketPosition();
+            // robot.armAttachment.wristHinge.setToSampleHighBasketDeliveryPosition();
+            // robot.armAttachment.claw.open();
+            // robot.armAttachment.arm.setToHighBasketPosition();
+        }
+    }
+    public void buttonRight (boolean pressed) {
+        if(pressed){
+            // robot.armAttachment.extension.setToSpecimenIntakePosition();
+            // robot.armAttachment.wristHinge.setToSpecimenIntakePosition();
+            // robot.armAttachment.claw.open();
+            // robot.armAttachment.arm.setToSpecimenIntakePosition();
+        }
+    }
+    public void buttonLTrigger(double speed) {
+        if(speed > 0.1 || speed < -0.1) {}
+    }
+    public void buttonRTrigger (double speed) {
+        if(speed > 0.1 || speed < -0.1) {}
+    }
+    public void buttonLBumper (boolean pressed) {
+        if(pressed){
+            robot.armAttachment.wristRotate.setToCCWPosition();
+        }
+    }
+    public void buttonRBumper (boolean pressed) {
+        if(pressed){
+            .armAttachment.wristRotate.setToCWPosition();
+        }
+    }
+    public void joystickLeftY (double speed) {
+        if(speed > 0.1 || speed < -0.1) {
+            robot.armAttachment.extension.moveByInput(speed);
+        }
+    }
+    public void joystickRightY (double speed) {
+        if(speed > 0.1 || speed < -0.1) {
+            robot.armAttachment.arm.moveByInput(speed);
+        }
+    }
+    public void joystickLeftX (double speed) {
+        if(speed > 0.1 || speed < -0.1) {}
+    }
+    public void joystickRightX (double speed) {
+        if(speed > 0.1 || speed < -0.1) {}
+    }
+    
 }

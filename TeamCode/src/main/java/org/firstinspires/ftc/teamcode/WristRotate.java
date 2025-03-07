@@ -1,5 +1,4 @@
 package org.firstinspires.ftc.teamcode;
-
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
@@ -7,14 +6,14 @@ public class WristRotate {
 
     private final double MIN_POSITION = 0.45;
     private final double MAX_POSITION = 1;
+    private final double START = 0.0;
+    private final double CENTER_POSITION = 0.0;
+    private final double MAX_CW_POSITION = 0.0;  //CW means "Clockwise"
+    private final double MAX_CCW_POSITION = 0.0; //CCW means "Counter-Clockwise"
     private Servo servo;
-
-    private double[] positions = {0.1, 0.3, 0.5, 0.7, 0.9};
-    private int currentPosition = 2;
 
     public WristRotate(HardwareMap hardwareMap){
         this.servo = hardwareMap.get(Servo.class, "wrist2");
-        //servo.scaleRange(MIN_POSITION, MAX_POSITION);
     }
 
     public void setPosition(double position){
@@ -28,38 +27,35 @@ public class WristRotate {
         }
     }
 
-    public void setPositionByIndex(int index) {
-        if(index >= 0 && index <= 4) {
-            currentPosition = index;
-        }
-        setPosition(positions[currentPosition]);
+    public void wristRotateLeft() {
+        setPosition(0.45);
     }
-
-    public void positionUp() {
-        if (currentPosition < 4) {
-            currentPosition++;
-        }
-        setPosition(positions[currentPosition]);
-    }
-
-    public void positionDown() {
-        if (currentPosition > 0) {
-            currentPosition--;
-        }
-        setPosition(positions[currentPosition]);
-    }
-
-    public void positionMin() {
-        currentPosition = 0;
-        setPosition(positions[currentPosition]);
-    }
-
-    public void positionMax() {
-        currentPosition = 4;
-        setPosition(positions[currentPosition]);
+    public void wristRotateRight() {
+        setPosition(1);
     }
 
     public double getPosition() {
         return this.servo.getPosition();
     }
+  
+    public void setToMaxPosition() {
+        setPosition(MAX_POSITION);
+    }
+    
+    public void setToMinPosition() {
+        setPosition(MIN_POSITION);
+    }
+    public void setToStartPosition() {
+        setPosition(START);
+    }
+    public void setToCenterPosition() {
+        setPosition(CENTER_POSITION);
+    }
+    public void setToCWPosition() {
+        setPosition(MAX_CW_POSITION);
+    }
+    public void setToCCWPosition() {
+        setPosition(MAX_CCW_POSITION);
+    }
 }
+

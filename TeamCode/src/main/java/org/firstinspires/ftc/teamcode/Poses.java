@@ -1,51 +1,23 @@
 package org.firstinspires.ftc.teamcode;
 
+
 public class Poses {
-
-    private Robot robot;
-
-    public final int ARM_SAMPLE_INTAKE = 300;
-    public final int ARM_SPECIMEN_GRAB = 990;
-    public final int ARM_SPECIMEN_PLACE = 1270;
-
-    public final int ARM_ASCEND_START = 2930;
-    public final int ARM_HIGH_BASKET = 2930; //Do NOT set this over 2930!!!
-
-    public Poses(Robot robot) {
-        this.robot = robot;
+    
+    //N3M0 robot;
+    
+    public final int ARM_START_ANGLE = 0; //Do NOT set this under 0!!!
+    public final int ARM_SAMPLE_INTAKE_ANGLE = 300;
+    public final int ARM_HIGH_BASKET_ANGLE = 2930; //Do NOT set this over 2930!!!
+    public final int ARM_SPECIMEN_INTAKE_ANGLE = 990;
+    public final int ARM_SPECIMEN_PLACE_ANGLE = 1270;
+    
+    public final double CLAW_OPEN_POSITION = 0.5;
+    public final double CLAW_CLOSE_POSITION = 0.8;
+    
+    
+    
+    public void grabSpecimen() {
+        
     }
-
-    public void sampleIntake() {
-        robot.armAttachment.elevator.retractFull();
-        robot.armAttachment.gripper.open();
-        //Move arm to proper rotation
-        robot.armAttachment.arm.setPosition(ARM_SAMPLE_INTAKE);
-    }
-
-    public void specimenIntake() {
-        robot.armAttachment.elevator.retractFull();
-        robot.armAttachment.gripper.open();
-        //Move arm to proper rotation
-        robot.armAttachment.arm.setPosition(ARM_SPECIMEN_GRAB);
-    }
-
-    public void specimenDelivery() {
-        //Resets if needed
-        robot.armAttachment.elevator.retractFull();
-        robot.armAttachment.gripper.close();
-        //Move arm to proper rotation
-        robot.armAttachment.arm.setPosition(ARM_SPECIMEN_PLACE);
-    }
-
-    public void topBasketDelivery() {
-        robot.armAttachment.arm.setPosition(ARM_HIGH_BASKET);
-        robot.armAttachment.elevator.extendFull();
-        robot.armAttachment.wristHinge.setPositionByIndex(4);
-        robot.armAttachment.wristRotate.setPositionByIndex(2);
-        robot.armAttachment.gripper.open();
-    }
-
-    public void ascend() {
-        robot.armAttachment.arm.setPosition(ARM_ASCEND_START);
-    }
+    // todo: write your code here
 }
