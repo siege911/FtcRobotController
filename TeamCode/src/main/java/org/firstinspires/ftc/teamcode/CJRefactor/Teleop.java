@@ -1,9 +1,9 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.CJRefactor;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-@TeleOp(name="TeleOp")
+@TeleOp(name="CJTeleOp")
 public class Teleop extends LinearOpMode {
     // http://192.168.43.1:8080
     // the robot is to be moved facing the right not facing toward the basket
